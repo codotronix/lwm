@@ -8,8 +8,8 @@
     <title>Prototypal Inheritance - Object Oriented JavaScript - Learn with Me</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/style.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,20 +43,22 @@
 
         Let's create a class named Animal. In pre-ES6 world, there was only "function" and with it we could create all (Ok, almost all) the Magics of OOP. So..., [read the code comments]<br/>
 
-        <code>
-          <pre>
-            //Let's define an Animal Class
-            function Animal () {
-                  this.color = "Black";
-                  this.speak = function () { 
-                      console.log("I can't speak...");
-                  }
+        
+        <pre>
+          <code>
+          //Let's define an Animal Class
+          function Animal () {
+            this.color = "Black";
+            this.speak = function () {
+              console.log("I can't speak...");
             }
+          }
 
-            //Now let's create an animal object
-            var animal = new Animal();
-          </pre>
-        </code>
+          //Now let's create an animal object
+          var animal = new Animal();
+          </code>
+        </pre>
+        
         <br/>
 
         Type the above code in your browser console and hit enter. "Animal" class and "animal" object will be created. Now type "animal" and hit enter, you will see something like
@@ -66,17 +68,19 @@
 
         Now, let's create a class "Cow" as below
 
-        <code>
-          <pre>
-            //let's define the Cow Class
-            function Cow () {
-              this.type = "Domestic";
-              this.speak = function () {
-                console.log("Moooo...");
-              }
+        
+        <pre>
+          <code>
+          //let's define the Cow Class
+          function Cow () {
+            this.type = "Domestic";
+            this.speak = function () {
+              console.log("Moooo...");
             }
-          </pre>
-        </code>
+          }
+          </code>
+        </pre>
+        
 
         Now comes the fun part. We want "Cow" class to be a child class of "Animal" class so that all the properties of "Animal" are present in a "Cow". Now we will use the "prototype" property of Cow object (Well, conceptually we are treating "Cow" as a class, but actually it is a function... and in JS functions are themselves objects. JavaScript is an Object based language, see? No? Ok, I admit it takes some time to digest, but actaully it's very simple... You'll get it... Let's go back to Code).
 
@@ -84,24 +88,28 @@
 
         Now type the following at console,
 
-        <code>
-          <pre>
-            Cow.prototype = new Animal();
+        
+        <pre>
+          <code>
+          Cow.prototype = new Animal();
 
-            //or we could also write
-            //Cow.prototype = animal;
-            //since we have already created an "animal" object
-          </pre>
-        </code>
+          //or we could also write
+          //Cow.prototype = animal;
+          //since we have already created an "animal" object
+          </code>
+        </pre>
+        
 
         Done! Now "Animal" is officially a parent of "Cow". Let's see it by creating and inspecting a "cow" object. Type,
 
-        <code>
-          <pre>
-            //let's create a "cow" object
-            var cow = new Cow();
-          </pre>
-        </code>
+        
+        <pre>
+          <code>
+          //let's create a "cow" object
+          var cow = new Cow();
+          </code>
+        </pre>
+        
 
         Our "cow" object is created. Now let's inspect it by typing "cow" in console and hitting enter. You should see something like this,
 
@@ -122,6 +130,6 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="../../js/script.js"></script>
   </body>
 </html>
