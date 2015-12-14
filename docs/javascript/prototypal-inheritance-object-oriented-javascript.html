@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Prototypal Inheritance - Object Oriented JavaScript - Learn with Me</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>    
+    <div class="container-fluid">
+
+      <!-- Content goes inside this div -->
+      <div class="col-xs-12 col-sm-8 col-md-8">
+        It has always amazed me how JavaScript handles<a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)">Inheritance</a> via <a href="https://en.wikipedia.org/wiki/Prototype-based_programming">Prototypes</a>. Well, if you search the net (and unluckily if you are new to JavaScript), in no time you will find yourself crushed beneath tons of cryptic explanations, and you will probably want to run away and never look back at Prototypal Inheritance ever.<br/>
+
+        But trust me, it is actually easy and fun.<br/>
+
+        <b>In simple words</b>, in JavaScript world every object has a property named “prototype” which holds the parent object of that object.<br/>
+
+        Got it? No? Ok don’t worry, <i>we are only 2 minutes away from our destination</i>.<br />
+        Let the Code Speak...<br />
+
+        <div class="tips">
+        Practice JavaScript in Browser Console:<br />
+        Browser console is probably the only tool you will ever need throughout your JavaScript programming career to quickly run any JS code to debug/study or just to clear a concept. Open your favorite browser in your computer (I recommend Google Chrome) and hit F12. See Console there? Here you can write and test/practice JavaScript code. Write/Copy paste the JavaScript code there and hit enter to see the results<br />
+        </div>
+
+        <div class="note">
+        [NOTE: This is a pre-<a href="https://github.com/lukehoban/es6features">ES6</a> world]<br />
+        </div>
+
+        Let's create a class named Animal. In pre-ES6 world, there was only "function" and with it we could create all (Ok, almost all) the Magics of OOP. So..., [read the code comments]<br/>
+
+        <code>
+          <pre>
+            //Let's define an Animal Class
+            function Animal () {
+                  this.color = "Black";
+                  this.speak = function () { 
+                      console.log("I can't speak...");
+                  }
+            }
+
+            //Now let's create an animal object
+            var animal = new Animal();
+          </pre>
+        </code>
+        <br/>
+
+        Type the above code in your browser console and hit enter. "Animal" class and "animal" object will be created. Now type "animal" and hit enter, you will see something like
+        <img src=""/>
+
+        So, our animal has the behaviour "color" and also the method "speak" that we defined in our "Animal" class.
+
+        Now, let's create a class "Cow" as below
+
+        <code>
+          <pre>
+            //let's define the Cow Class
+            function Cow () {
+              this.type = "Domestic";
+              this.speak = function () {
+                console.log("Moooo...");
+              }
+            }
+          </pre>
+        </code>
+
+        Now comes the fun part. We want "Cow" class to be a child class of "Animal" class so that all the properties of "Animal" are present in a "Cow". Now we will use the "prototype" property of Cow object (Well, conceptually we are treating "Cow" as a class, but actually it is a function... and in JS functions are themselves objects. JavaScript is an Object based language, see? No? Ok, I admit it takes some time to digest, but actaully it's very simple... You'll get it... Let's go back to Code).
+
+        Just remember, every object has a "prototype" property which holds its parent object. That's it, that's all...
+
+        Now type the following at console,
+
+        <code>
+          <pre>
+            Cow.prototype = new Animal();
+
+            //or we could also write
+            //Cow.prototype = animal;
+            //since we have already created an "animal" object
+          </pre>
+        </code>
+
+        Done! Now "Animal" is officially a parent of "Cow". Let's see it by creating and inspecting a "cow" object. Type,
+
+        <code>
+          <pre>
+            //let's create a "cow" object
+            var cow = new Cow();
+          </pre>
+        </code>
+
+        Our "cow" object is created. Now let's inspect it by typing "cow" in console and hitting enter. You should see something like this,
+
+        <img src="" />
+
+        See, "__proto__: Animal" there? that's our cue that "cow" object inherits from parent "Animal" class / or animal object actually. Now if really "cow" inherits from "animal" class, it should also have "color" behaviour that we defined in "Animal" class. So, type them one by one, hit enter after each and see the result. Here is mine,
+
+        <img src="" />
+
+        Any question/suggestion? Let me know in the comments below...
+      </div>
+
+      <!-- This is the right column -->
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
