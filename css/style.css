@@ -1,3 +1,12 @@
+header {
+	font-size: 30px;
+    padding: 20px 15px;
+    border-bottom: 1px solid #bbb;
+    margin-bottom: 30px;
+    color: #7577D6;
+    font-weight: bold;
+}
+
 code {
 	display: block;
 	background: #000;
