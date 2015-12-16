@@ -27,7 +27,7 @@ pre {
 	text-align: center;
     background: #E42E2E;
     color: #FFFFFF;
-    padding: 10px 0;
+    padding: 10px 5px;
     font-size: 20px;
     margin-bottom: 30px;
     border-radius: 6px;
@@ -56,6 +56,7 @@ pre code {
 	background: #000;
 	color: #FFF;
 	margin: 0;
+	overflow: auto;
 }
 
 .note,
@@ -78,4 +79,8 @@ code .fa,
     font-weight: bold;
     font-size: 18px;
     padding: 1px 5px;
+}
+
+code .titleBar {
+	background: #000;
 }
