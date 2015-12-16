@@ -2,6 +2,10 @@ pre {
 	margin: 0;
 }
 
+.post {
+	margin-bottom: 30px;
+}
+
 .blockImg {
 	margin: 10px 0 20px 0;
     max-width: 100%;
@@ -73,4 +77,5 @@ code .fa,
     margin: 0 -15px 10px;
     font-weight: bold;
     font-size: 18px;
+    padding: 1px 5px;
 }
