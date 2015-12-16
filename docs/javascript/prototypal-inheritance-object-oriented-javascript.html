@@ -24,7 +24,7 @@
         Codotronix: The Way of a Coder
       </header>
       <!-- Content goes inside this div -->
-      <div class="col-xs-12 col-sm-8 col-md-8">
+      <div class="col-xs-12 col-sm-8 col-md-8 post">
         <h1 class="col-xs-12 post-title">
           Prototypal Inheritance - Object Oriented JavaScript
         </h1>
@@ -43,7 +43,7 @@
         Let see it in action...<br />
 
         <div class="tips">
-        <div class="titleBar"><i class="fa fa-lightbulb-o"></i><span>Practice JavaScript in Browser Console</span></div>
+        <strong>Practice JavaScript in Browser Console.</strong>
         Browser console is probably the only tool you will ever need throughout your JavaScript programming career to quickly run any JS code to debug/study or just to clear a concept. Open your favorite browser in your computer (I recommend Google Chrome) and hit F12. See Console there? Here you can write and test/practice JavaScript code. Write/Copy paste the JavaScript code there and hit enter to see the results.
         </div>
       
@@ -119,11 +119,11 @@
         </pre>
         
 
-        Our "cow" object is created. Now let's inspect it by typing "cow" in console and hitting enter. You should see something like this,        
+        Our "cow" object is created. Now let's inspect it by typing "cow" in console and hitting enter. You should see something like this,    
         <img class="blockImg" src="cow-object.PNG" alt="Browser console screenshot for the newly created cow object" title="Browser console screenshot for the newly created cow object" />
         
 
-        See, "__proto__: Animal" there? that's our cue that "cow" object inherits from parent "Animal" class / or animal object actually. Now if really "cow" inherits from "animal" class, it should also have "color" behaviour that we defined in "Animal" class. So, type them one by one, hit enter after each and see the result. Here is mine,        
+        See, "__proto__: Animal" there? that's our cue that "cow" object inherits from parent "Animal" class / or animal object actually. Now if really "cow" inherits from "animal" object, it should also have "color" behaviour that we defined in "Animal" class. So, type them one by one, hit enter after each and see the result. Here is mine,        
         <img class="blockImg" src="cow-object-properties.PNG" alt="browser console screenshot showing the properties of the cow object" title="browser console screenshot showing the properties of the cow object" />
         
 
@@ -133,6 +133,32 @@
       <!-- This is the right column -->
       <div class="col-xs-12 col-sm-4 col-md-4">
         
+      </div>
+
+      <!-- This is the Disqus Comments Section -->
+      <div>
+        <div id="disqus_thread"></div>
+            <script>
+            /**
+            * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+            */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//codotronix.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
       </div>
     </div>
 
