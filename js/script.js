@@ -36,21 +36,28 @@ $(function(){
 	//if Note doesn't have a titleBar, add it
 	$('.note').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
-			$('.note').prepend('<div class="titleBar"><i class="fa fa-file-text"></i><span>Note</span></div>');
+			$(this).prepend('<div class="titleBar"><i class="fa fa-file-text"></i><span>Note</span></div>');
 		}
 	});
 
 	//if Code doesn't have a titleBar, add it
 	$('code').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
-			$('code').prepend('<div class="titleBar"><i class="fa fa-code"></i><span>Let the Code Speak</span></div>');
+			$(this).prepend('<div class="titleBar"><i class="fa fa-code"></i><span>Let the Code Speak</span></div>');
 		}
 	});
 	
 	//if Tips doesn't have a titleBar, add it
 	$('.tips').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
-			$('.tips').prepend('<div class="titleBar"><i class="fa fa-lightbulb-o"></i><span>Tips</span></div>');
+			$(this).prepend('<div class="titleBar"><i class="fa fa-lightbulb-o"></i><span>Tips</span></div>');
+		}
+	});
+
+	//if warning doesn't have a titleBar, add it
+	$('.warning').each(function(){
+		if ($(this).children('.titleBar').length == 0) {
+			$(this).prepend('<div class="titleBar"><i class="fa fa-exclamation-circle"></i><span>Warning</span></div>');
 		}
 	});
 })

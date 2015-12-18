@@ -48,7 +48,8 @@ code .string * {
 
 .note,
 code,
-.tips {
+.tips,
+.warning {
 	display: block;
 	margin: 20px 0;
     padding: 0 15px 15px;
@@ -64,13 +65,15 @@ pre code {
 }
 
 .note,
-.tips {	
+.tips,
+.warning {	
     background: #ECECD8;    
 }
 
 .note .fa,
 code .fa,
-.tips .fa{
+.tips .fa,
+.warning .fa{
 	color: #F5FB00;
     font-size: 23px;
     margin: 5px 10px;
@@ -85,6 +88,19 @@ code .fa,
     padding: 1px 5px;
 }
 
+.warning .titleBar {
+    background: orangered;
+}
+
 code .titleBar {
 	background: #000;
+}
+
+.menuItem a {
+    color: #2C2FB9;
+    padding: 10px;
+    display: block;
+    border: 3px outset #C7C5FF;
+    border-radius: 7px;
+    text-decoration: none;
 }
