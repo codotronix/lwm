@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Code with interest and love"/>
+    <meta property="og:site_name" content="Codotronix: The Way of a Coder"/>
+    <meta property="og:url" content="http://codotronix.barick.in"/> 
+    <meta property="og:description" content="Codotronix takes a different approach in learning coding, the approach of investigation and dissection of coding languages, frameworks and libraries. If something magical is happening with code, we love to see why it is happening and how it is happening. We love code, we love to taste each bits and bytes of it. And this is a site for those whose questions never end and those who always love to research and play with codes. And finally, this site is about the journey of a Coder, his life and his love for coding..."/>
+    <meta property="fb:admins" content="100000196062998" />
+    <meta property="og:url" content="http://codotronix.barick.in/" />
     <title>Prototypal Inheritance - Object Oriented JavaScript - Codotronix: The Way of a Coder</title>
 
     <!-- Bootstrap -->
@@ -33,7 +39,7 @@
         <h1 class="col-xs-12 post-title">
           Prototypal Inheritance - Object Oriented JavaScript
         </h1>
-        It has always amazed me how JavaScript handles <a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)">Inheritance</a> via <a href="https://en.wikipedia.org/wiki/Prototype-based_programming">Prototypes</a>. Well, if you search the net (and unluckily if you are new to JavaScript), in no time you will find yourself crushed beneath tons of cryptic explanations, and you will probably want to run away and never look back at Prototypal Inheritance ever.
+        It has always amazed me how JavaScript handles <a href="https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)" rel="nofollow">Inheritance</a> via <a href="https://en.wikipedia.org/wiki/Prototype-based_programming" rel="nofollow">Prototypes</a>. Well, if you search the net (and unluckily if you are new to JavaScript), in no time you will find yourself crushed beneath tons of cryptic explanations, and you will probably want to run away and never look back at Prototypal Inheritance ever.
         <br/>
         <br/>
         But trust me, it is actually easy and fun.
@@ -52,8 +58,8 @@
         Browser console is probably the only tool you will ever need throughout your JavaScript programming career to quickly run any JS code to debug/study or just to clear a concept. Open your favorite browser in your computer (I recommend Google Chrome) and hit F12. See Console there? Here you can write and test/practice JavaScript code. Write/Copy paste the JavaScript code there and hit enter to see the results.
         </div>
       
-        <div class="note">
-        [NOTE: This is a pre-<a href="https://github.com/lukehoban/es6features">ES6</a> world]
+        <div class="warning">
+        [NOTE: This is a pre-<a href="https://github.com/lukehoban/es6features" rel="nofollow">ES6</a> world]
         </div>
        
         Let's create a class named Animal. In pre-ES6 world, there was only "function" and with it we could create all (Ok, almost all) the Magics of OOP. So..., [read the code comments]
@@ -74,7 +80,7 @@
         </pre>
         
         Type the above code in your browser console and hit enter. "Animal" class and "animal" object will be created. Now type "animal" and hit enter, you will see something like
-        <img class="blockImg" src="Animal-Class-animal-object.PNG" alt="Browser console screenshot of the created class and object" title="Browser console screenshot of the created class and object" />
+        <img class="blockImg" src="img/Animal-Class-animal-object.PNG" alt="Browser console screenshot of the created class and object" title="Browser console screenshot of the created class and object" />
         
 
         So, our animal has the behaviour "color" and also the method "speak" that we defined in our "Animal" class.
@@ -125,11 +131,11 @@
         
 
         Our "cow" object is created. Now let's inspect it by typing "cow" in console and hitting enter. You should see something like this,    
-        <img class="blockImg" src="cow-object.PNG" alt="Browser console screenshot for the newly created cow object" title="Browser console screenshot for the newly created cow object" />
+        <img class="blockImg" src="img/cow-object.PNG" alt="Browser console screenshot for the newly created cow object" title="Browser console screenshot for the newly created cow object" />
         
 
         See, "__proto__: Animal" there? that's our cue that "cow" object inherits from parent "Animal" class / or animal object actually. Now if really "cow" inherits from "animal" object, it should also have "color" behaviour that we defined in "Animal" class. So, type them one by one, hit enter after each and see the result. Here is mine,        
-        <img class="blockImg" src="cow-object-properties.PNG" alt="browser console screenshot showing the properties of the cow object" title="browser console screenshot showing the properties of the cow object" />
+        <img class="blockImg" src="img/cow-object-properties.PNG" alt="browser console screenshot showing the properties of the cow object" title="browser console screenshot showing the properties of the cow object" />
         
 
         Any question/suggestion? Let me know in the comments below...
