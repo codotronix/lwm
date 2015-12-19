@@ -27,6 +27,11 @@ pre {
     text-align: center;
 }
 
+.blog-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .post-title {
 	text-align: center;
     background: #E42E2E;
