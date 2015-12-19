@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="First Node Server"/>
+    <meta property="og:site_name" content="Codotronix: The Way of a Coder"/>
+    <meta property="og:url" content="http://codotronix.barick.in"/> 
+    <meta property="og:description" content="Create your first server in node.js in the simplest and brain-friendly way. Codotronix takes a different approach in learning coding, the approach of investigation and dissection of coding languages, frameworks and libraries. If something magical is happening with code, we love to see why it is happening and how it is happening. We love code, we love to taste each bits and bytes of it. And this is a site for those whose questions never end and those who always love to research and play with codes. And finally, this site is about the journey of a Coder, his life and his love for coding..."/>
+    <meta property="fb:admins" content="100000196062998" />
+    <meta property="fb:app_id" content="1775494089340931" />
+    <title>First Node.js Server - Hands on Node.js Tutorial - Codotronix: The Way of a Coder</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/style.css" />
+
+    <!-- ShareThis -->
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+    <body>    
+        <div class="container-fluid">
+            <header class="blog-title">
+                Codotronix: The Way of a Coder
+            </header>
+            <!-- Content goes inside this div -->
+            <div class="col-xs-12 col-sm-9 col-md-9 post">
+                <h1 class="col-xs-12 post-title">
+                First Node.js Server - Hands on Node.js Tutorial
+                </h1>
+
+                Coding a Node.js server is so simple that even plain language explanation can be complex when compared to the coding language. So, we will directly dive into the Code first, and then explain it (though it might not be neccessary anymore, trust me...)
+
+                <div class="note">
+                    In this tutorial I will assume Node.js is installed in your system. And you know how to move/navigate through different directories in command prompt / terminal. 
+                </div>
+
+                Save the following code in a file and name it "server.js".
+
+                <pre>
+                <code>
+                    //require the module name "http", and assign it to any variable for later use     
+                    var http = require("http");
+
+                    //now create a server and assign it to any variable for later use
+                    var server = http.createServer();
+
+                    //now give the server a port to listen to...
+                    server.listen(9090);
+                </code>
+                </pre>
+
+                <div class="note">
+                    <b>"Modules"</b> in node.js are just pre-written code files that we use to make our lives easier. Think of it like <b>".h" header files</b> that we <b>include</b> in our <b>C</b> programs, or <b>packages</b> that we <b>import</b> in <b>Java</b>. Here, in node.js we use <b>"require"</b> in place of <b>"include"</b> or <b>"import"</b>. That's it, that's all... 
+                </div>
+
+
+                Technically your server is ready now to be run (But it is not complete yet...)
+                <br/>
+                Go to command prompt in windows, or terminal in mac or linux. Navigate to the directory where your server.js file is saved. and type,
+                <pre>
+                <code>
+                    node server
+                    //yes you can omit the ".js" extension
+                </code>
+                </pre>
+                Now, if you go to your browser and type "localhost:9090" and hit enter, you will see the request is loading for a long time, showing "waiting for localhost" and after a long time, it might just time out and stop... So, you might be asking yourself, did it worked? did the server run? 
+                <br/><br/>
+                The answer is "Yes, it worked..." <br/>
+                The browser could reach the server and wait for its response. But we didn't code our server to do anything or send any response when a request comes in... So, let's fix it...
+                <br/><br/>
+                We need to tell our server what it need to do when a request comes in. So, let's define a function to handle incoming requests.
+                <pre>
+                <code>
+
+                    //this function will handle the incoming requests
+                    function handleRqst (request, response) {
+                        response.end("Congratulation... Your Node.js server is now up and running...");
+                    }
+
+                </code>
+                </pre>
+
+                Now, we need a way to tell node.js that whenever a reuqest comes in, call our function "handleRqst" to process the incoming request and do whatever we want it to do. Fortunately, we can pass a function as a <b>callback function</b> to the <b>"http.createServer()"</b> method we created earlier. So, let's modify our server.js file to look like this...
+
+                <pre>
+                <code>
+                    //require the module name "http", and assign it to any variable for later use     
+                    var http = require("http");
+
+                    //now create a server and assign it to any variable for later use
+                    var server = http.createServer(handleRqst);
+
+                    //this function will handle the incoming requests
+                    function handleRqst (request, response) {
+                        response.end("Congratulation... Your Node.js server is now up and running...");
+                    }
+
+                    //now give the server a port to listen to...
+                    server.listen(9090);
+
+                    //let's leave a message for ourselves in console/terminal
+                    console.log('Server is running at localhost:9090');
+
+                </code>
+                </pre>
+
+                Now hit the browser with <b>"http://localhost:9090/"</b> and Bingo! you should see the message :<br/>
+                <strong>Congratulation... Your Node.js server is now up and running...</strong>
+                
+
+                <br><br/>
+                Any question/suggestion? Let me know in the comments below...
+            </div>
+
+            <!-- This is the right column -->
+            <div class="col-xs-12 col-sm-3 col-md-3">
+
+            </div>
+
+        <!-- This is the Disqus Comments Section -->
+        
+        <div class="col-xs-12">
+            <div id="disqus_thread"></div>
+            <script>
+            /**
+            * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+            */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//codotronix.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="../../js/script.js"></script>
+
+        <!-- ShareThis Code for Social Ntwk Sharing -->
+        <script type="text/javascript">stLight.options({publisher: "b10b2bc3-6238-44d8-b666-08dbef5ff18c", doNotHash: false, doNotCopy: true, hashAddressBar: false});</script>
+        <script>
+          var options={ "publisher": "b10b2bc3-6238-44d8-b666-08dbef5ff18c", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "pinterest", "email", "sharethis"]}};
+          var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+        </script>
+        <!-- End of ShareThis Code -->
+    </body>
+</html>
