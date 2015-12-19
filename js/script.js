@@ -1,5 +1,5 @@
 $(function(){
-	var keywords = ['var', 'function', 'new', 'prototype'];
+	var keywords = ['console', 'function', 'http', 'listen', 'log', 'new', 'prototype', 'require', 'request', 'response', 'var'];
 	
 	//$('.note, code').addClass('specialBox');
 

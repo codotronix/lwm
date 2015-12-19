@@ -104,3 +104,12 @@ code .titleBar {
     border-radius: 7px;
     text-decoration: none;
 }
+
+.menuHeader {
+    background: cornflowerblue;
+    color: #FFF;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    font-size: 23px;
+}
