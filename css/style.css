@@ -42,14 +42,16 @@ pre {
     border-radius: 6px;
 }
 
+
 code .keyword {
 	color: #C0ADFF;
 }
 
 code .string,
 code .string * {
-	color: #FF5A5A !important;
+	color: #14CA14 !important;
 }
+
 
 .note,
 code,
@@ -62,12 +64,14 @@ code,
     overflow: hidden;
 }
 
+
 pre code {
 	background: #000;
 	color: #FFF;
 	margin: 0;
 	overflow: auto;
 }
+
 
 .note,
 .tips,
