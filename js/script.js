@@ -1,37 +1,62 @@
 $(function(){
+
+	
 	var keywords = ['console', 'function', 'http', 'listen', 'log', 'new', 'prototype', 'require', 'request', 'response', 'var'];
 	
 	//$('.note, code').addClass('specialBox');
 
+	
 	$('code').each(function(){
 		var codeString = $(this).text();
-		codeString = codeString.split('');
 		
+		codeString = codeString.split('');		
 		var count = 0;
 		//console.log(codeString);
-		for(i in codeString) {						
+		var allStrings = [];
+		var aString = '';
+		var stringStart = false;
+		for(i in codeString) {
 			if(codeString[i] == '"') {
 				count++;
 				if(count % 2 == 0) {
-					codeString[i] ='"</span>';
+					codeString[i] ='</span>';
+					stringStart = false;
+					allStrings.push(aString);
+					aString = '';
 				} else {
-					codeString[i] = '<span class="string">"';
+					codeString[i] = '<span class="string">';
+					stringStart = true;
 				}
+			} else if (stringStart) {
+				//console.log(aString);
+				aString += codeString[i];
+				codeString[i] = '';
+				//console.log(aString);
 			}
 		}
-		
+		//console.log(allStrings)
 		codeString = codeString.join('');
 		
+		/* (["']).*?\1  */	
+	
 		for (i in keywords) {
 			var s = "\\b" + keywords[i] + "\\b";
 			var reg = new RegExp(s, "g");
 			codeString = codeString.replace(reg, '<span class="keyword">' + keywords[i] + '</span>');
 		}
+
 		
-		//codeString = wordsArr.join(' ');
 		
+		//codeString = wordsArr.join(' ');		
 		$(this).html(codeString);
+
+
+		$(this).find('.string').each(function(index){
+			$(this).text('"' + allStrings[index] + '"');
+		})
 	});
+	
+	
 
 	//if Note doesn't have a titleBar, add it
 	$('.note').each(function(){
