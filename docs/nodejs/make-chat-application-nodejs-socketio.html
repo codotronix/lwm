@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Make A Chat App using Node.js and Socket.io - App Tutorial"/>
+    <meta property="og:site_name" content="Codotronix: The Way of a Coder"/>
+    <meta property="og:url" content="http://codotronix.barick.in/docs/nodejs/make-chat-application-nodejs-socketio.html"/>
+    <meta property="og:image" content="http://2.bp.blogspot.com/-sIjWQJx6eS8/VnUtRZNDCVI/AAAAAAAAA5A/kM1_4euIZeg/s1600/nodejs-2560x1440.png"/>
+    <meta property="og:description" content="Learn how to make you own chat application using node.js and socket.io with this simple step by step, code first tutorial. I will also show you the errors and issues I faced while making this, so that you can overcome them easily. Codotronix takes a different approach in learning coding and computer programming languages, the approach of investigation and dissection of coding languages, frameworks and libraries. If something magical is happening with code, we love to see why it is happening and how it is happening. We love code, we love to taste each bits and bytes of it. And this is a site for those whose questions never end and those who always love to research and play with codes. And finally, this site is about the journey of a Coder, his life and his love for coding..."/>
+    <meta property="fb:admins" content="100000196062998" />
+    <meta property="fb:app_id" content="1775494089340931" />
+    <title>Make A Chat App using Node.js and Socket.io - Codotronix: The Way of a Coder</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/style.css" />
+
+    <!-- ShareThis -->
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+    <body>    
+        <div class="container-fluid">
+            <header class="blog-title">
+                <a href="http://codotronix.barick.in/">
+                    Codotronix: The Way of a Coder
+                </a>
+            </header>
+            <!-- Content goes inside this div -->
+            <div class="col-xs-12 col-sm-9 col-md-9 post">
+                <h1 class="col-xs-12 post-title">
+                Make A Chat App using Node.js and Socket.io
+                </h1>
+
+                In this shrot and simple tutorial I will show you from start to finish how to make a chat application using Node.js and Scoket.io very quickly and easily...
+                <br/><br/>
+
+                Also, I would like to request you to <i>read the <b>code comments</b></i>. They explains what each line of code does and leads to a better understanding.
+
+                <div class="note">
+                    In this tutorial I will assume that you already know the basics of Node.JS... <br/>
+                    But if you don't know or need a brush up, just look at <a href="http://codotronix.barick.in/docs/nodejs/first-node-server.html"><strong>How to create your first Node.JS server</strong></a> and you will be good to go just in no time. 
+                </div>
+
+                Let's start building our Node.js chat server by coding our favourite file, "server.js".
+                <br/><br/>
+
+                first, we will load the required modules, "http", "express" and "socket.io" ...
+
+                <pre>
+                <code>
+                    /* 
+                     * Load the required modules
+                     */
+                     var express = require("express");
+                     var http = require("http");
+                     var socketIO = require("socket.io");     
+ 
+                </code>
+                </pre>
+
+                Now that we have the required modules, let wire them up together. Pay attention, this is the trickiest part and after this tricky code snippet, there will be nothing much left to be undesttod... So, focus,
+
+                <pre>
+                <code>
+                    /* 
+                     * Let's make an "Express App",
+                     * Then create an "http server" which should pass the incoming requests
+                     * to our "Express App"...
+                     * And Finally let our SocketIO listen to the "http server"
+                     */
+                     var app = express();
+                     var httpServer = http.createServer(app);
+                     var io = socketIO.listen(httpServer);     
+
+                </code>
+                </pre>
+
+                Notice that we are making an <b>express app</b> and then using it as a <b>callback function</b> for the <b>createServer</b> method of our <b>http</b> object. To understand this, you can go to the github repo of express module and you will find that the the callback function express() has the same signature (parameters) as supplied by the <b>createServer</b> method of our <b>http</b> object, i.e. "request", "response" and "next".
+                <br/><br/>
+                Now, let's give our server a port to listen to,
+
+                <pre>
+                <code>
+                     /*
+                      * Now we will tell the server, which port it should listen to...       
+                      * If any PORT is defined in Process Environment variable, then
+                      * Listen ot it... Otherwise, use 9090 as default
+                      */
+                    httpServer.listen(process.env.PORT || 9090, function() {
+                        console.log('Server listening at ' + (process.env.PORT || 9090));         
+                    });
+
+                </code>
+                </pre>
+
+                The "server" part of our "chat server" is ready, now for the chat part we need to use the "io" object that we previously defined.
+                <br/><br/>
+
+                And it all starts with a "connection"... Whenever a new connection from a client (browser) is made, our chat server should start doing it's magic. So, let's start listening to the "io" object for any incoming "connection"
+                . Once a connection is made from client to server, it is the job of "socket.io" to keep it alive (that means, we don't have to do the watch keepng job, hurray!!!)
+
+
+                <pre>
+                <code>
+                    io.on('connection', function(socket){
+                        /*
+                         * Everything happens here
+                         * we can console.log anything to see what it contains
+                         * let's log the new user's id, which is unique
+                         */
+                         console.log('new connection made, id=' + socket.id);
+
+                         /*
+                          * On any incoming message event, broadcast that message to everyone.
+                          * The event name should be same as on client side, i.e.
+                          * same event name that we declare in "socket.emit" in our script.js file
+                          */
+                            socket.on('msg', function (incomingMsg) {
+                                /*
+                                 * Use "io.emit" for broadcasting i.e sending to everyone...
+                                 * Use "socket.emit" whenever you want to emit message only to
+                                 * that particular socket 
+                                 */
+
+                                io.emit('msg', incomingMsg);
+                            });
+                    );
+
+                </code>
+                </pre>
+
+                Ok now, whenever a new connection is made, we get the "socket" object for that connection. Each connection has a different and unique "socket" object. It is like the private line between that client and the chat server. Hence, whenever we want to communicate with any client, we will use its socket object.
+
+                <br /> <br />
+
+                Now, the server and the client, both have the ability to raise or trigger events (using "emit" method) and pass some information with it, so that, whoever is listening to that event, will catch that event and get the information. Events are identified by an <b>event name</b>, which can be anything of our choice. In our case, the "event name" is 'msg'.
+
+                <br /> <br />
+
+                So, whenever the client emits any event using event name 'msg' we want to listen to it using "on" function of our "socket" object for that client. The signature is <b>socket.on('eventName', callbackFn)</b> Similarly, on server side we can use <b>socket.emit('eventName', theInfo)</b> if we want to emit some trigger for any particular socket, or we can use <b>io.emit('eventName', theInfo)</b> to emit an event for all the clients. In our case we want to broadcast the incoming message to all our clients, hence we will be using <i>io.emit</i>.
+
+
+                <br/><br/>
+
+                That's all, our chat server is ready. Next we will build the chat client. All the client side code will be put in the "public" folder. We can tell express to serve static contents from a particular directory using express.static middleware, like this, 
+                <br/>
+                <b>app.use(express.static((__dirname, 'public')));</b>
+                <br/><br/>
+
+                Before building the chat client, let's see the complete code for our server (without the comments this time),
+
+                <pre>
+                <code>                    
+                    var express = require("express");
+                    var http = require("http");
+                    var socketIO = require("socket.io");
+                    
+                    var app = express();
+                    var httpServer = http.createServer(app);
+                    var io = socketIO.listen(httpServer);
+                    
+                    app.use(express.static((__dirname, 'public')));
+                    
+                    httpServer.listen(process.env.PORT || 9090, function() {
+                        console.log('Server listening at ' + (process.env.PORT || 9090));
+                    });
+
+                    io.on('connection', function (socket) {
+
+                        socket.on('msg', function (incomingMsg) {
+                            io.emit('msg', incomingMsg);
+                        });
+                    });
+                </code>
+                </pre>
+
+                We will build our chat client using HTML, CSS, JavaScript / jQuery.
+
+                <div class="note">
+                    Here, I will assume the reader has a basic understanding of HTML, CSS and JavaScript / jQuery. Even if not, I will explain almost every line of code via comment, so, understanding should not be a problem for anyone.
+                </div>
+
+                
+
+                The html will contain 4 elements, <br />
+                1. A chat container, where we will show the chat coversation <br />
+                2. A name field, so that user can enter his/her name <br />
+                3. A text field to write the chat message
+                4. A send button, to send the chat message
+
+                <br/><br/>
+                Pretty basic, huh?
+                <br />
+                Here is the HTML markup, put it in "index.html" file inside "public" folder
+
+                <pre>
+                <code class="html">                    
+                <h1>Welcome to Codotronix-Chat</h1>
+
+                <!-- This Div will Contain All the Chats -->
+                <div id="chatsContainer"></div>
+
+                <!-- A text field to let user enter his/her name -->
+                <input type="text" id="username" placeholder="Enter your name..." />
+                <br />
+                <!-- This is where we write our message -->
+                <input type="text" id="myMsg" placeholder="Write your message..." />
+                <br />
+                <!-- And this is our "Send Button" -->
+                <button id="sendBtn">Send</button>
+
+                <link rel="stylesheet" href="css/style.css" type="text/css" />
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+                <script type="text/javascript" src="js/script.js"></script>
+                <script src="/socket.io/socket.io.js"></script>
+
+                </code>
+                </pre>
+                See, the last script src <b>"/socket.io/socket.io.js"</b>, it will be provided by the socket.io itself. It is neccessary for our client side code to work.
+                <br/><br/>
+
+                Let's throw in some style, which we should put in "style.css" in directory "public/css"
+
+                <pre>
+                <code>
+                    body {
+                        background: orange;
+                    }
+
+                    #chatsContainer {
+                        height: 300px;
+                        width: 300px;
+                        border: 2px inset #eee;
+                        overflow: auto;
+                        margin-bottom: 5px;
+                        background: #FFF;
+                    }
+
+                    #myMsg,
+                    #sendBtn,
+                    #username {
+                        width: 300px;
+                        height: 30px;
+                        margin-top: 5px
+                    }
+
+                    .msgfield {
+                        padding: 5px;
+                        background: skyblue;
+                        margin: 10px;
+                        border-radius: 5px;
+                        border: 3px outset #CED4F5;
+                    }
+                </code>
+                </pre>
+
+                Now the most vital part on client side, the JS code, put it in "script.js" file in the directory "public/js".
+
+                <pre>
+                <code>
+
+                    $(function(){
+
+                        /*
+                         * Make a socket object, 
+                         * All our communication to the server, i.e. 
+                         * talking to or listening from server will happen via this object
+                         */
+                        var socket = io();
+
+                        /*
+                         * Whenever user clicks the send button
+                         * Send the Message to the server
+                         */
+                        $('#sendBtn').click(function () {
+
+                            //retrieve the msg from textbox, trim it off white spaces
+                            var msg = $('#myMsg').val().trim();
+
+                            /*
+                             * If the msg length is not zero, i.e. msg is not empty, send it to server.
+                             * We will trigger/emit a "msg" event to the server... This event name can be
+                             * Anything of our choice, here we will use "msg"
+                             */
+                            if (msg.length > 0) {
+
+                                /*
+                                 * We will Append the username infront of the message
+                                 *  for decoration purpose only....
+                                 */
+                                var userName = $('#username').val();
+                                var completeMsg = userName + ': ' + msg;
+
+                                //use socket.emit to send something to the server
+                                socket.emit('msg', completeMsg);
+                            }
+                        });
+
+
+                        /*
+                         * Whenever we receive any 'msg' event from server,
+                         * We append it to our chatsContainer field...
+                         * USe socket.on for listening from server
+                         */
+                        socket.on('msg', function (incomingMsg) {
+                            var decoratedHtml = '<div class="msgfield">' + incomingMsg + '</div>';
+
+                            $('#chatsContainer').append(decoratedHtml);
+                        })
+                    })
+                </code>
+                </pre>
+
+                The code is pretty self explanatory with all those comments. I just want to point out the same "emit" function, and "socket.emit('eventName', theInfo)" structure that we have already discussed while writing the server side code.
+
+                <br/><br/>
+                Now we should go to the terminal / cmd window, and "npm install" the required modules, viz. "express" and "socket.io". Once done, we can start our server by "node server.js" or dropping the extenstion "node server" command.
+
+                <pre>
+                <code>
+
+                    > npm install express --save
+                    ...
+                    ...
+                    ...
+
+                    > npm install socket.io --save
+                    ...
+                    ...
+                    ...
+
+                    > node server
+
+                    Server listening at 9090
+
+                </code>
+                </pre>
+
+                <br/><br/>
+                Let's see it in action <a href="https://youtu.be/DKtSuKAvNhI" target="_blank">in this youtube video</a>,
+                <br/><br/>                
+
+                
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="https://youtu.be/DKtSuKAvNhI"></iframe>
+                </div>
+                
+
+                <br><br/>
+                Any question/suggestion? Let me know in the comments below...
+            </div>
+
+            <!-- This is the right column -->
+            <div class="col-xs-12 col-sm-3 col-md-3">
+
+            </div>
+
+        <!-- This is the Disqus Comments Section -->
+        
+        <div class="col-xs-12">
+            <div id="disqus_thread"></div>
+            <script>
+            /**
+            * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+            */
+            
+            var disqus_config = function () {
+            this.page.url = 'http://codotronix.barick.in/docs/nodejs/make-chat-application-nodejs-socketio.html'; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 'make-chat-application-nodejs-socketio'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//codotronix.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="../../js/script.js"></script>
+
+        <!-- ShareThis Code for Social Ntwk Sharing -->
+        <script type="text/javascript">stLight.options({publisher: "b10b2bc3-6238-44d8-b666-08dbef5ff18c", doNotHash: false, doNotCopy: true, hashAddressBar: false});</script>
+        <script>
+          var options={ "publisher": "b10b2bc3-6238-44d8-b666-08dbef5ff18c", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "pinterest", "email", "sharethis"]}};
+          var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+        </script>
+        <!-- End of ShareThis Code -->
+    </body>
+</html>

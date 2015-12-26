@@ -7,6 +7,13 @@ $(function(){
 
 	
 	$('code').each(function(){
+		if ($(this).hasClass('html')) {
+			var htmlCode = $(this).html();
+			$(this).html('').text(htmlCode);
+			return;
+		}
+
+
 		var codeString = $(this).text();
 		
 		codeString = codeString.split('');		
@@ -15,6 +22,8 @@ $(function(){
 		var allStrings = [];
 		var aString = '';
 		var stringStart = false;
+
+		// loop to identify String
 		for(i in codeString) {
 			if(codeString[i] == '"') {
 				count++;
@@ -34,8 +43,13 @@ $(function(){
 				//console.log(aString);
 			}
 		}
+
 		//console.log(allStrings)
 		codeString = codeString.join('');
+
+		//identify comments
+		codeString = codeString.replace(/\/\*/g, '<span class="comment">/*');
+		codeString = codeString.replace(/\*\//g, '*/</span>');
 		
 		/* (["']).*?\1  */	
 	
@@ -44,7 +58,6 @@ $(function(){
 			var reg = new RegExp(s, "g");
 			codeString = codeString.replace(reg, '<span class="keyword">' + keywords[i] + '</span>');
 		}
-
 		
 		
 		//codeString = wordsArr.join(' ');		

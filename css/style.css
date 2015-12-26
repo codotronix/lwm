@@ -52,6 +52,11 @@ code .string * {
 	color: #14CA14 !important;
 }
 
+code .comment,
+code .comment * {
+    color: gray !important;
+}
+
 
 .note,
 code,
