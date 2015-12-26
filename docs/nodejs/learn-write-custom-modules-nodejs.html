@@ -124,7 +124,7 @@
                 <pre>
                 <code>
                     node server
-                    //yes you can omit the ".js" extension
+                    /* yes you can omit the ".js" extension */
                 </code>
                 </pre>
 
@@ -140,14 +140,14 @@
 
                 <pre>
                 <code>
-                    //Let's define a object
+                    /* Let's define a object */
                     var calc = {};
 
-                    //let's define some properties
+                    /* let's define some properties */ 
                     calc.moduleName = "Calculator";
                     calc.version = "1.0";
 
-                    //Let's define some functions
+                    /* Let's define some functions */   
                     calc.add = function (n1, n2) {
                         return (n1+n2);
                     };
@@ -156,8 +156,10 @@
                         return (n1*n2);
                     }
 
-                    //Let's export it, 
-                    //"exports" and "module.exports" refers to the same object, So, Don't panic...
+                    /* Let's export it, 
+                     * "exports" and "module.exports" refers to the same object,   
+                     * So, Don't panic...
+                     */
                     module.exports = calc;
                 </code>
                 </pre>

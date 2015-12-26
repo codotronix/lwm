@@ -53,13 +53,13 @@
 
                 <pre>
                 <code>
-                    //require the module name "http", and assign it to any variable for later use     
+                    /* require the module name "http", and assign it to any variable for later use */   
                     var http = require("http");
 
-                    //now create a server and assign it to any variable for later use
+                    /* now create a server and assign it to any variable for later use */  
                     var server = http.createServer();
 
-                    //now give the server a port to listen to...
+                    /* now give the server a port to listen to... */  
                     server.listen(9090);
                 </code>
                 </pre>
@@ -75,7 +75,7 @@
                 <pre>
                 <code>
                     node server
-                    //yes you can omit the ".js" extension
+                    /* yes you can omit the ".js" extension */
                 </code>
                 </pre>
                 Now, if you go to your browser and type "localhost:9090" and hit enter, you will see the request is loading for a long time, showing "waiting for localhost" and after a long time, it might just time out and stop... So, you might be asking yourself, did it worked? did the server run? 
@@ -91,7 +91,7 @@
                 <pre>
                 <code>
 
-                    //this function will handle the incoming requests
+                    /* this function will handle the incoming requests */
                     function handleRqst (request, response) {
                         response.end("Congratulation... Your Node.js server is now up and running...");
                     }
@@ -103,21 +103,21 @@
 
                 <pre>
                 <code>
-                    //require the module name "http", and assign it to any variable for later use     
+                    /* require the module name "http", and assign it to any variable for later use */      
                     var http = require("http");
 
-                    //now create a server and assign it to any variable for later use
+                    /* now create a server and assign it to any variable for later use */  
                     var server = http.createServer(handleRqst);
 
-                    //this function will handle the incoming requests
+                    /* this function will handle the incoming requests */
                     function handleRqst (request, response) {
                         response.end("Congratulation... Your Node.js server is now up and running...");
                     }
 
-                    //now give the server a port to listen to...
+                    /* now give the server a port to listen to... */
                     server.listen(9090);
 
-                    //let's leave a message for ourselves in console/terminal
+                    /* let's leave a message for ourselves in console/terminal */
                     console.log('Server is running at localhost:9090');
 
                 </code>
