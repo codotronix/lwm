@@ -69,20 +69,20 @@
           <code>
           /* Let's define an Student Class */
           function Student (name) {
-            // "var" keyword inside a class makes a variable PRIVATE 
+            /* "var" keyword inside a class makes a variable PRIVATE */
           	var name = name;
-          	var roll = 0;			// Let's initialize the roll no. to 0
+          	var roll = 0;			/* Let's initialize the roll no. to 0 */
 
-          	//Let's define a public variable
-          	this.section = 'A';		// This can be accessed directly, no getter/setter needed
+          	/* Let's define a public variable */
+          	this.section = 'A';		/* This can be accessed directly, no getter/setter needed */
 
-          	// prefixing "this" makes a field public 
+          	/* prefixing "this" makes a field public */
           	this.getName = function () {
           		return name;
           	};
 
           	this.setRoll = function (num) {
-          		// let's say if anyone tries to se a negative roll number, we prevent it...  
+          		/* let's say if anyone tries to se a negative roll number, we prevent it... */
           		if (num > 0) {
           			roll = num;
           		}          		
@@ -93,10 +93,10 @@
           	};
           }
 
-          // Now let's create a student
+          /* Now let's create a student */
           var pritam = new Student ("Pritam Das");
 
-          // Create another student
+          /* Create another student */
           var dan = new Student ("Dan Paul");
           </code>
         </pre>
