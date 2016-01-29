@@ -98,4 +98,24 @@ $(function(){
 			$(this).prepend('<div class="titleBar"><i class="fa fa-exclamation-circle"></i><span>Warning</span></div>');
 		}
 	});
+    
+    //load sidebar
+    function loadSideBar () {
+        var sidebarHTML = '';
+        
+        //the VDOsssss
+        for (var i in sidebar.vdo) {
+            sidebarHTML +=  '<div class="vdo">'
+                        +       '<label class="title">' + sidebar.vdo[i].title + '</label>'
+                        +       '<div class="embed-responsive embed-responsive-4by3">'
+                        +           '<iframe class="embed-responsive-item " src="' + sidebar.vdo[i].src + '" frameborder="0" allowfullscreen></iframe>'
+                        +       '</div>'
+                        +   '</div>';
+        }
+        
+        //dump it all to page
+        $('.rSideBar').html(sidebarHTML);
+    }
+    
+    loadSideBar();    
 })

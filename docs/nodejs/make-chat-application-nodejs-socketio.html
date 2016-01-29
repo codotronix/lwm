@@ -17,6 +17,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../css/style.css" />
+        
+    <script src="../../js/sidebar.js"></script>
 
     <!-- ShareThis -->
     <script type="text/javascript">var switchTo5x=true;</script>
@@ -221,12 +223,13 @@
                 <br />
                 <!-- And this is our "Send Button" -->
                 <button id="sendBtn">Send</button>
-
+                
+                <!-- Uncomment the styles and scripts below
                 <link rel="stylesheet" href="css/style.css" type="text/css" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
                 <script type="text/javascript" src="js/script.js"></script>
                 <script src="/socket.io/socket.io.js"></script>
-
+                -->
                 </code>
                 </pre>
                 See, the last script src <b>"/socket.io/socket.io.js"</b>, it will be provided by the socket.io itself. It is neccessary for our client side code to work.
@@ -364,8 +367,23 @@
             </div>
 
             <!-- This is the right column -->
-            <div class="col-xs-12 col-sm-3 col-md-3">
-
+            <div class="col-xs-12 col-sm-3 col-md-3 rSideBar">
+<!--
+                <div class="vdo">
+                    <label class="title">My Recent Video</label>
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item " src="https://www.youtube.com/embed/osxtZzpV3W0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="vdo">
+                    <label class="title">Another Tutorial</label>
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item " src="https://www.youtube.com/embed/DKtSuKAvNhI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+-->
+                
             </div>
 
         <!-- This is the Disqus Comments Section -->
