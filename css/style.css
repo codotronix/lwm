@@ -2,6 +2,10 @@ pre {
 	margin: 0;
 }
 
+a {
+    color: #5A0101;
+}
+
 html {
     background: #8282FF;
 }
