@@ -2,8 +2,19 @@ pre {
 	margin: 0;
 }
 
-.container-fluid {
+html {
+    background: #8282FF;
+}
+
+.mainContainer {
 	padding-left: 30px;
+    background: #8282FF;
+    color: #eee;
+}
+
+.secComments {
+    background: #FFF;
+    border-radius: 10px;
 }
 
 .post {
@@ -18,15 +29,17 @@ pre {
 }
 
 .blog-title {
+    position: relative;
 	font-size: 40px;
     padding: 20px 15px;
-    border-bottom: 1px solid #bbb;
+/*    border-bottom: 1px solid #bbb;*/
     margin: 0 -15px 10px -30px;
     color: #FFF;
     font-weight: bold;
     text-align: center;
-    background: url(../img/sunset-sky-1082265_1280.jpg) 0px -294px no-repeat;
-    background-size: cover;
+    background: purple;
+/*    background: url(../img/sunset-sky-bg.jpg) 0px -25px no-repeat;*/
+/*    background-size: cover;*/
 }
 
 .blog-title a {
@@ -46,6 +59,32 @@ pre {
 .blog-title a {
     text-decoration: none;
     color: inherit;
+}
+
+.followUsIcons {
+    position: absolute;
+    list-style: none;
+    top: 25px;
+    right: 20px;
+}
+
+.followUsIcons li {
+    margin: 5px 0 0 5px;
+    float: left;
+}
+
+.followUsIcons li .fa {
+    font-size: 25px;
+    border: 2px solid #fff;
+    height: 40px;
+    width: 40px;
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.followUsIcons li .fa:hover {
+    background: #fff;
+    color: purple;
 }
 
 .post-title {
@@ -83,6 +122,7 @@ code,
     padding: 0 15px 15px;
     border-radius: 6px;
     overflow: hidden;
+    color: #000;
 }
 
 
@@ -136,7 +176,7 @@ code .titleBar {
 }
 
 .menuHeader {
-    background: #5D1C1C;
+    background: #000;
     color: #FFF;
     border-radius: 4px;
     padding: 5px;
@@ -144,28 +184,54 @@ code .titleBar {
     font-size: 23px;
 }
 
+
 /**************** COLORS ******************/
 .menuItem:nth-child(5n) a {
-    background: #28ABE3;
+    background: #415EF1;
 }
 
-.menuItem:nth-child(5n+1) a {
+.menuItem:nth-child(5n-1) a {
     background: #72bf48;
 }
 
-.menuItem:nth-child(5n+2) a {
-    background: #FB6648;
+.menuItem:nth-child(5n-2) a {
+/*    background: #FB6648;*/
+    background: #FF2B00;
 }
 
-.menuItem:nth-child(5n+3) a {
-    background: #0ECEAB;
+.menuItem:nth-child(5n-3) a {
+    background: #9DD239;
 }
 
-.menuItem:nth-child(5n+4) a {
+.menuItem:nth-child(5n-4) a {
     background: #FA6900;
 }
 /******************************************/
 
+/************** Right Side Bar ************/
 .rSideBar .vdo {
     margin-top: 30px;
+}
+
+.rSideBar .title {
+    background: darkcyan;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #FFF;
+}
+/******************************************/
+
+/*** Media Queries ***/
+@media (max-width: 767px) {
+    .menuItem {
+        margin-top: 10px;
+    }
+    
+    .followUsIcons {
+        right: 5px;
+    }
+    
+    .followUsIcons li {
+        float: none;
+    }
 }
