@@ -18,13 +18,29 @@ pre {
 }
 
 .blog-title {
-	font-size: 30px;
+	font-size: 40px;
     padding: 20px 15px;
     border-bottom: 1px solid #bbb;
-    margin-bottom: 10px;
-    color: #9D96FF;
+    margin: 0 -15px 10px -30px;
+    color: #FFF;
     font-weight: bold;
     text-align: center;
+    background: url(../img/sunset-sky-1082265_1280.jpg) 0px -294px no-repeat;
+    background-size: cover;
+}
+
+.blog-title a {
+    display: block;
+    cursor: pointer;
+}
+
+.blog-title label {
+    display: block;
+}
+
+.blog-title .subtitle {
+    font-size: 17px;
+    font-weight: normal;
 }
 
 .blog-title a {
@@ -111,22 +127,44 @@ code .titleBar {
 }
 
 .menuItem a {
-    color: #2C2FB9;
+    color: #FFF;
     padding: 10px;
     display: block;
-    border: 3px outset #C7C5FF;
     border-radius: 7px;
     text-decoration: none;
+    height: 150px;
 }
 
 .menuHeader {
-    background: cornflowerblue;
+    background: #5D1C1C;
     color: #FFF;
     border-radius: 4px;
     padding: 5px;
     text-align: center;
     font-size: 23px;
 }
+
+/**************** COLORS ******************/
+.menuItem:nth-child(5n) a {
+    background: #28ABE3;
+}
+
+.menuItem:nth-child(5n+1) a {
+    background: #72bf48;
+}
+
+.menuItem:nth-child(5n+2) a {
+    background: #FB6648;
+}
+
+.menuItem:nth-child(5n+3) a {
+    background: #0ECEAB;
+}
+
+.menuItem:nth-child(5n+4) a {
+    background: #FA6900;
+}
+/******************************************/
 
 .rSideBar .vdo {
     margin-top: 30px;
