@@ -227,6 +227,10 @@ code .titleBar {
         margin-top: 10px;
     }
     
+    .followUsIcons {
+        right: 5px;
+    }
+    
     .followUsIcons li {
         float: none;
     }
