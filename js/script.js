@@ -117,5 +117,18 @@ $(function(){
         $('.rSideBar').html(sidebarHTML);
     }
     
-    loadSideBar();    
+    loadSideBar();
+    
+    //load followUs topbar icons
+    function loadFollowUs () {
+        var followUsHtm = '';
+        followUsHtm += '<ul class="followUsIcons">'
+                        +     '<li><a href="https://twitter.com/codotronix" class="fa fa-twitter"></a></li>'
+                        +     '<li><a href="https://www.facebook.com/codotronix" class="fa fa-facebook"></a></li>'
+                        + '</ul>';
+        
+        $('.blog-title').append(followUsHtm);
+    }
+    
+    loadFollowUs();
 })

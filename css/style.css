@@ -2,6 +2,10 @@ pre {
 	margin: 0;
 }
 
+html {
+    background: #8282FF;
+}
+
 .mainContainer {
 	padding-left: 30px;
     background: #8282FF;
@@ -25,6 +29,7 @@ pre {
 }
 
 .blog-title {
+    position: relative;
 	font-size: 40px;
     padding: 20px 15px;
 /*    border-bottom: 1px solid #bbb;*/
@@ -54,6 +59,32 @@ pre {
 .blog-title a {
     text-decoration: none;
     color: inherit;
+}
+
+.followUsIcons {
+    position: absolute;
+    list-style: none;
+    top: 25px;
+    right: 20px;
+}
+
+.followUsIcons li {
+    margin: 5px 0 0 5px;
+    float: left;
+}
+
+.followUsIcons li .fa {
+    font-size: 25px;
+    border: 2px solid #fff;
+    height: 40px;
+    width: 40px;
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.followUsIcons li .fa:hover {
+    background: #fff;
+    color: purple;
 }
 
 .post-title {
@@ -194,5 +225,9 @@ code .titleBar {
 @media (max-width: 767px) {
     .menuItem {
         margin-top: 10px;
+    }
+    
+    .followUsIcons li {
+        float: none;
     }
 }
