@@ -2,6 +2,7 @@ $(function(){
 
 	
 	var keywords = ['console', 'function', 'http', 'listen', 'log', 'new', 'prototype', 'require', 'request', 'response', 'var'];
+    var  htmlTags = ['div', 'input', 'link', 'script', 'span' ];
 	
 	//$('.note, code').addClass('specialBox');
 
@@ -9,7 +10,32 @@ $(function(){
 	$('code').each(function(){
 		if ($(this).hasClass('html')) {
 			var htmlCode = $(this).html();
-			$(this).html('').text(htmlCode);
+            htmlCode = htmlCode.replace(/</g, '&lt;');
+            htmlCode = htmlCode.replace(/>/g, '&gt;');
+            
+            htmlCode = htmlCode.replace(/&lt;!--/g, '<span class="comment">&lt;!--');
+            htmlCode = htmlCode.replace(/--&gt;/g, '--&gt;</span>');           
+            
+            
+			$(this).html('').html(htmlCode);
+			return;
+		}
+        
+        if ($(this).hasClass('css')) {
+			var htmlCode = $(this).html();
+            var matched = htmlCode.match(/\w+[:-]/g);
+            //htmlCode = htmlCode.replace(/\w+[:-]/g, '<span class="keyword">\1</span>');
+            //console.log('printing match');
+            console.log(matched);
+            
+            for (i in matched) {
+                var matchedWord = matched[i].replace(/[:-]/, "");
+                var s = "\\b" + matchedWord + "\\b[:-]";
+                var reg = new RegExp(s, "g");
+                htmlCode = htmlCode.replace(reg, '<span class="keyword">' + matched[i] + '</span>');
+		    }
+            
+			$(this).html('').html(htmlCode);
 			return;
 		}
 
