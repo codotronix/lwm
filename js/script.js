@@ -4,7 +4,7 @@ $(function(){
 	var keywords = ['console', 'function', 'http', 'listen', 'log', 'new', 'prototype', 'require', 'request', 'response', 'var'];
     var  htmlTags = ['div', 'input', 'link', 'script', 'span' ];
 	
-	//$('.note, code').addClass('specialBox');
+	//$('note, code').addClass('specialBox');
 
 	
 	$('code').each(function(){
@@ -98,7 +98,7 @@ $(function(){
 	
 
 	//if Note doesn't have a titleBar, add it
-	$('.note').each(function(){
+	$('note').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
 			$(this).prepend('<div class="titleBar"><i class="fa fa-file-text"></i><span>Note</span></div>');
 		}
@@ -112,14 +112,14 @@ $(function(){
 	});
 	
 	//if Tips doesn't have a titleBar, add it
-	$('.tips').each(function(){
+	$('tips').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
 			$(this).prepend('<div class="titleBar"><i class="fa fa-lightbulb-o"></i><span>Tips</span></div>');
 		}
 	});
 
 	//if warning doesn't have a titleBar, add it
-	$('.warning').each(function(){
+	$('attn').each(function(){
 		if ($(this).children('.titleBar').length == 0) {
 			$(this).prepend('<div class="titleBar"><i class="fa fa-exclamation-circle"></i><span>Warning</span></div>');
 		}

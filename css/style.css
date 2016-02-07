@@ -117,10 +117,10 @@ code .comment * {
 }
 
 
-.note,
+note,
 code,
-.tips,
-.warning {
+tips,
+attn {
 	display: block;
 	margin: 20px 0;
     padding: 0 15px 15px;
@@ -138,16 +138,16 @@ pre code {
 }
 
 
-.note,
-.tips,
-.warning {	
+note,
+tips,
+attn {	
     background: #ECECD8;    
 }
 
-.note .fa,
+note .fa,
 code .fa,
-.tips .fa,
-.warning .fa{
+tips .fa,
+attn .fa{
 	color: #F5FB00;
     font-size: 23px;
     margin: 5px 10px;
@@ -162,7 +162,7 @@ code .fa,
     padding: 1px 5px;
 }
 
-.warning .titleBar {
+attn .titleBar {
     background: orangered;
 }
 
